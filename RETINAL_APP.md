@@ -37,6 +37,10 @@ EfficientNet hooks are available.
 `render.yaml` defines one Python web service and one static site. Upload the
 checkpoint to a Hugging Face model repository and set these Render variables:
 
+The backend includes `retinal_backend/runtime.txt` to pin Render to Python
+3.12.8. This is required because the upstream checkpoint integration uses
+PyTorch 2.5.1, whose published wheels do not support Python 3.14.
+
 - API: `HF_MODEL_REPO`, optional `HF_MODEL_FILENAME`, `FRONTEND_ORIGINS`
 - Static site: `VITE_API_URL` set to the API service URL
 
