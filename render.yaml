@@ -1,0 +1,26 @@
+services:
+  - type: web
+    name: retinal-screening-api
+    runtime: python
+    rootDir: retinal_backend
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: FRONTEND_ORIGINS
+        sync: false
+      - key: HF_MODEL_REPO
+        sync: false
+      - key: HF_MODEL_FILENAME
+        value: best_efficientnet_b0.pth
+      - key: HF_TOKEN
+        sync: false
+  - type: web
+    name: retinal-screening-ui
+    runtime: static
+    rootDir: retinal_frontend
+    buildCommand: npm install && npm run build
+    staticPublishPath: dist
+    envVars:
+      - key: VITE_API_URL
+        sync: false
+

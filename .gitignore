@@ -1,0 +1,5 @@
+retinal_frontend/node_modules/
+retinal_frontend/dist/
+retinal_backend/__pycache__/
+retinal_backend/models/
+.env
